@@ -1,0 +1,15 @@
+<mat-tab-group (selectedIndexChange)="onTabClick(['active', 'cancelled', 'resolved'][$event])">
+  <mat-tab label="Active">
+    <app-data-table *ngIf="data | async as panics; else loading" [tab]="'Active'" [data]="panics" ngSkipHydration></app-data-table>
+  </mat-tab>
+  <mat-tab label="Cancelled">
+    <app-data-table *ngIf="data | async as panics; else loading" [tab]="'Cancelled'" [data]="panics" ngSkipHydration></app-data-table>
+  </mat-tab>
+  <mat-tab label="Resolved">
+    <app-data-table *ngIf="data | async as panics; else loading" [tab]="'Resolved'" [data]="panics" ngSkipHydration></app-data-table>
+  </mat-tab>
+</mat-tab-group>
+  
+<ng-template #loading>
+  <p>Loading panics...</p>
+</ng-template>

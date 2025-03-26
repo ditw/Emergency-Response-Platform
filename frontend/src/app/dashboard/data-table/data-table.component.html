@@ -1,0 +1,49 @@
+<table class="data-table" id="panicsListView">
+  <thead>
+    <tr>
+      <th class="sortable" (click)="onSort('created_at')">
+        Date/Time
+        <span class="sort-icon">{{ showSortIcon('created_at') }}</span>
+      </th>
+      <th class="sortable" (click)="onSort('user_reporter')">
+        Reporter
+        <span class="sort-icon">{{ showSortIcon('user_reporter') }}</span>
+      </th>
+      <th class="sortable" (click)="onSort('provider_name')">
+        Provider (Source)
+        <span class="sort-icon">{{ showSortIcon('provider_name') }}</span>
+      </th>
+      <th class="sortable" (click)="onSort('severity')">
+        Severity
+        <span class="sort-icon">{{ showSortIcon('severity') }}</span>
+      </th>
+      <th class="sortable" (click)="onSort('location')">
+        Location
+        <span class="sort-icon">{{ showSortIcon('location') }}</span>
+      </th>
+      <th class="details">Details</th>
+      <th *ngIf="panicHasActiveStatus()">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let panic of sortedData; trackBy: trackByFn">
+      <td>{{ panic.created_at | date:'dd MMMM yyyy \'at\' hh:mm a' }}</td>
+      <td>{{ panic.user_reporter }}</td>
+      <td>{{ panic.provider_name }}</td>
+      <td class="severity"><span class="{{panic.severity}}">{{ panic.severity | uppercase }}</span></td>
+      <td [innerText]="panic.location"></td>
+      <td class="details" [innerText]="panic.details"></td>
+      <td *ngIf="panic.status === 'active'">
+        <button (click)="updateStatus(panic, 'resolved')" class="resolve-button" [disabled]="loading[panic.id]">
+          <span *ngIf="!loading[panic.id]">Resolve</span>
+          <mat-icon *ngIf="loading[panic.id]" class="loading-spinner">autorenew</mat-icon>
+        </button>
+        <button (click)="updateStatus(panic, 'cancelled')" class="cancel-button" [disabled]="loading[panic.id]">
+          <span *ngIf="!loading[panic.id]">Cancel</span>
+          <mat-icon *ngIf="loading[panic.id]" class="loading-spinner">autorenew</mat-icon>
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>  
+<hr />

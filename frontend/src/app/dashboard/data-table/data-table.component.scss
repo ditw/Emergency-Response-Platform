@@ -1,0 +1,119 @@
+$default-low: green;
+$default-medium: #FFC000;
+$default-high: darkorange;
+$default-critical: red;
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 5px;
+    margin-bottom: 10px;
+  }
+  .data-table th, .data-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  .data-table th {
+    background-color: #3273b4;
+    color: white;
+    &.details {
+        width: 30%;
+    }
+  }
+  .cancel-button, .resolve-button {
+    padding: 4px 6px;
+    position: relative;
+    margin-right: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    float: left;
+    cursor: pointer;
+    font-size: 15px;
+    background-color: #3273b4;
+    color: white;
+    margin-bottom: 2px;
+    &:hover {
+        background-color: #5495d0;
+    }
+  }
+  .cancel-button {
+    background-color: darkorange;
+    &:hover {
+        background-color: orange;
+    }
+  }
+  .loading-spinner {
+    animation: spin 1s linear infinite;
+  }
+  @keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  .severity {
+    font-weight: 500;
+    &.low {
+      td {
+        border: 2px dotted $default-low;
+      }
+    }
+    .low {
+      color: $default-low;
+    }
+    &.medium {
+      td {
+        border: 2px dotted $default-medium;
+      }
+    }
+    .medium {
+      color: $default-medium;
+    }
+    &.high {
+      td {
+        border: 2px dotted $default-high;
+      }
+    }
+    .high {
+      color: $default-high;
+    }
+    &.critical {
+      td {
+        border: 2px dotted $default-critical;
+      }
+    }
+    .critical {
+      color: $default-critical;
+    }
+  }
+  .data-table {
+    th {
+      &.sortable {
+        cursor: pointer;
+      }
+      span {
+        &.sort-icon {
+          margin-left: 5px;
+          font-size: 0.8em;
+          color: white;
+        }
+    }
+  }
+}
+
+.fade-in {
+  opacity: 0;
+  animation: fadeIn 0.3s ease-in forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
