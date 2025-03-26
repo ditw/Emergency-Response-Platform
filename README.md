@@ -4,10 +4,10 @@ On-demand Emergency Response Platform project (ERP) to receive, handle and manag
 ### Project Structure
 
 #### Frontend
-Frontend dashboard for Emergency Response Platform using Angular.
+Frontend dashboard view for (ERP) using Angular.
 
 #### Backend
-Backend system for Emergency Response Platform using ExpressJS
+Backend REST API system for (ERP) using ExpressJS.
 
 ### Business Process Flow Diagram
 
